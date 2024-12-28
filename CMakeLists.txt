@@ -19,7 +19,7 @@ find_package(Boost 1.67
              COMPONENTS
                 system
                 filesystem
-				date_time
+                date_time
                 unit_test_framework
              REQUIRED)
 
@@ -40,7 +40,7 @@ target_include_directories(core INTERFACE
 )
 
 if(MSVC)
-	target_link_libraries(core INTERFACE Crypt32.lib)
+    target_link_libraries(core INTERFACE Crypt32.lib)
 endif()
 
 if(APPLE)
@@ -58,28 +58,28 @@ target_link_libraries(
         OpenSSL::SSL
         OpenSSL::Crypto)
 
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(
-    "certifyConfigVersion.cmake"
-    COMPATIBILITY AnyNewerVersion)
-
-install(FILES
-            "netutilsConfig.cmake"
-            "${CMAKE_BINARY_DIR}/certifyConfigVersion.cmake"
-        DESTINATION lib/cmake/certify)
-
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
-        DESTINATION include
-        FILES_MATCHING PATTERN "*.hpp")
-
-install(TARGETS core
-        EXPORT certifyTargets
-        INCLUDES DESTINATION include)
-
-install(EXPORT certifyTargets
-        FILE certifyTargets.cmake
-        NAMESPACE certify::
-        DESTINATION lib/cmake/certify)
+#include(CMakePackageConfigHelpers)
+#write_basic_package_version_file(
+#    "certifyConfigVersion.cmake"
+#    COMPATIBILITY AnyNewerVersion)
+#
+#install(FILES
+#            "netutilsConfig.cmake"
+#            "${CMAKE_BINARY_DIR}/certifyConfigVersion.cmake"
+#        DESTINATION lib/cmake/certify)
+#
+#install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/
+#        DESTINATION include
+#        FILES_MATCHING PATTERN "*.hpp")
+#
+#install(TARGETS core
+#        EXPORT certifyTargets
+#        INCLUDES DESTINATION include)
+#
+#install(EXPORT certifyTargets
+#        FILE certifyTargets.cmake
+#        NAMESPACE certify::
+#        DESTINATION lib/cmake/certify)
 
 include(CTest)
 if(BUILD_TESTING)
